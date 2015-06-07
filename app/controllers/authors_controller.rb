@@ -12,6 +12,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    byebug
     if request.env['PATH_INFO'] == "/author"
       @user = current_user
       @author = @user.author
