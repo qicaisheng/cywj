@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 main">
+
+      <h2 class="sub-header">作者专区 <span>&nbsp;&nbsp;总共 0 本书</span></h2>
+      <% if @user.author && @user.author.is_right %>
+        add
+      <% elsif @user.author && @user.author.is_apply_for %>
+        <%= render 'authors/show' %>
+      <% else %>
+        <%= render 'authors/new' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

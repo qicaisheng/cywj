@@ -1,0 +1,37 @@
+<div class="alert alert-warning" role="alert">
+  您好，您好还不是作者，无法创建书籍。<br>我们乐看乐学的愿景是希望能够把我们的知识和思想通过小说表达胡来，让大众在愉快的阅读过程中学习到知识。也是您的知识的一种传承，如果您在某一领域有一定的建树，且有兴趣写出来，我们欢迎您加入我们。
+</div>
+<%= form_for current_user.build_author, multiple: true, html: {class: "new-author-form "} do |f| %>
+  <h2 class="sub-header">申请成为作者</h2>
+
+  <%= render '/shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <label>用户名:</label>
+    <span><%= current_user.username %></span>
+  </div>
+  <div class="form-group">
+    <label>邮箱:</label>
+    <span><%= current_user.email %></span>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mobile, "手机:" %>
+    <%= f.text_field :mobile, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :job, "职业:" %>
+    <%= f.text_field :job, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :major, "专业:" %>
+    <%= f.text_field :major, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "介绍:" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <%= f.submit "申请成为作者", class: "btn btn-default suosuo" %>
+
+<% end %>

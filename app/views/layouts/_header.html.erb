@@ -1,0 +1,30 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><b>乐看乐学</b></a>
+    
+      <div class="dropdown">
+            <% if user_signed_in? %>
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+                <img src="image/pm1logo.png" class="user-img"><%= current_user.username %>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= current_user_path %>">个人中心</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=  destroy_user_session_path %>">退出</a></li>
+              </ul>
+            <% else %>
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+                <img src="image/pm1logo.png" class="user-img">登录
+                <span class="caret"></span>
+              </button>
+
+            <% end %>
+        </div>
+      </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</nav>
+
+
+
+

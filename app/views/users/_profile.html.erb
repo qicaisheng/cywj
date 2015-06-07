@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 main">
+      <h2 class="sub-header">用户资料</h2>
+      <div  class="sub-header row">       
+        <div class="col-xs-6 col-sm-6">
+          <!--<button href="#" class="btn btn-default suosuo">修改资料</button>-->
+        </div>                     
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          
+          <tbody>
+            <tr>
+              <td>类别</td>
+              <td>读者</td>
+            </tr>
+            <tr>
+              <td>昵称</td>
+              <td><%= @user.username %></td>
+            </tr>
+            <tr>
+              <td>邮箱</td>
+              <td><%= @user.email %></td>
+            </tr>
+
+            <tr>
+              <td>注册时间</td>
+              <td><%= @user.created_at %></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>  
+
+    </div>
+  </div>
+</div>

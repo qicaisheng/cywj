@@ -1,0 +1,69 @@
+<div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-12 col-md-12 main">
+
+          <h2 class="sub-header">新建书籍 </h2>
+          
+
+          <%= form_for @novel, multiple: true, html: {class: "new-author-form "} do |f| %>
+
+            <%= render '/shared/error_messages', object: f.object %>
+
+            <div class="form-group">
+              <%= f.label :name, "书名:" %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :type, "类型:" %>
+              <%= f.text_field :type, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :cover, "封面:" %>
+              <%= f.text_field :cover, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :keywords, "关键词:" %>
+              <%= f.text_area :keywords, class: "form-control", placeholder: "描述" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description, "介绍:" %>
+              <%= f.text_area :description, class: "form-control", placeholder: "描述" %>
+            </div>
+
+            <%= f.submit "保存资料", class: "btn btn-default suosuo" %>
+
+          <% end %>
+
+
+          
+          <div class="table-responsive">
+            <table class="table table-striped">
+              
+              <tbody>
+                <tr>
+                  <td class="ziduan">书名</td>
+                  <td class="ziduanzhi"><input type="text" class="form-control" placeholder="请输入书名"></td>
+                </tr>
+                <tr>
+                  <td>类型</td>
+                  <td><input type="text" class="form-control" placeholder="请输入类型"></td>
+                </tr>
+                <tr>
+                  <td>封面</td>
+                  <td><input type="file" class="form-control" placeholder="请上传封面"></td>
+                </tr>
+                <tr>
+                  <td>关键词</td>
+                  <td><input type="text" class="form-control" placeholder="请填写书籍的关键词，三个左右"></td>
+                </tr>
+                <tr>
+                  <td>内容简介</td>
+                  <td><textarea type="text" class="form-control" placeholder="请输入内容简介"></textarea></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

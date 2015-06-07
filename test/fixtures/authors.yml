@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mobile: MyString
+  job: MyString
+  major: MyString
+  description: MyText
+
+two:
+  mobile: MyString
+  job: MyString
+  major: MyString
+  description: MyText
