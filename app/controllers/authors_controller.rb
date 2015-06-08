@@ -7,12 +7,16 @@ class AuthorsController < ApplicationController
     @author = current_user.create_author(author_params)
     @author.is_apply_for = true
     @author.user_id = current_user.id
-    @author.save
-    redirect_to user_author_path
+    if @author.save
+      flash[:success] = "您已提交申请"
+    else
+      flash[:error] = "ddd"
+    end
+    redirect_to current_author_path
+
   end
 
   def show
-    byebug
     if request.env['PATH_INFO'] == "/author"
       @user = current_user
       @author = @user.author
