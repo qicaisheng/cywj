@@ -1,0 +1,24 @@
+<%= form_for [@novel, @chapter], multiple: true, html: {class: "chapter-form "} do |f| %>
+
+  <%= render '/shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :number, "章节序号:" %>
+    <%= f.text_field :number, class: "form-control", placeholder: "请输入章节序号，只能输入数字" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "章节标题:" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "请输入章节标题" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, "正文内容:" %>
+    <%= f.text_area :content, class: "redactor form-control", :rows => 40, :cols => 120, placeholder: "请输入内容"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :keywords, "章节关键词:" %>
+    <%= f.text_field :keywords, class: "form-control", placeholder: "请输入章节关键词" %>
+  </div>
+
+  <%= f.submit "发布章节", class: "btn btn-default suosuo" %>
+
+<% end %>

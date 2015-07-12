@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
       :case_sensitive => false
     } # etc.
 
+  # mount_uploader :image, :ImageUploader
+  
   def login=(login)
     @login = login
   end

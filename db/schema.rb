@@ -11,21 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607135406) do
+ActiveRecord::Schema.define(version: 20150712091339) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "mobile"
     t.string   "job"
     t.string   "major"
     t.text     "description"
-    t.boolean  "is_apply_for"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.boolean  "is_right"
+    t.integer  "status"
+    t.string   "name"
   end
 
   add_index "authors", ["user_id"], name: "index_authors_on_user_id"
+
+  create_table "chapters", force: :cascade do |t|
+    t.integer  "number"
+    t.string   "name"
+    t.text     "content"
+    t.string   "keywords"
+    t.integer  "novel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "status"
+  end
+
+  add_index "chapters", ["novel_id"], name: "index_chapters_on_novel_id"
 
   create_table "novels", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +52,22 @@ ActiveRecord::Schema.define(version: 20150607135406) do
   end
 
   add_index "novels", ["author_id"], name: "index_novels_on_author_id"
+
+  create_table "redactor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -65,11 +94,10 @@ ActiveRecord::Schema.define(version: 20150607135406) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.boolean  "is_author"
-    t.boolean  "is_admin"
     t.string   "mobile"
     t.string   "job"
     t.string   "major"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

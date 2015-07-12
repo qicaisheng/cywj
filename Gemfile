@@ -30,6 +30,15 @@ gem 'rolify'
 # bootstrap
 gem 'bootstrap-sass'
 
+gem 'rails_admin'
+
+# gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+# gem 'tinymce-rails'
+gem 'redactor-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'font-awesome-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

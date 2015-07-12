@@ -146,7 +146,7 @@ body {
   border: none;
 }
 .dropdown-menu {  right:0 !important; left:auto; min-width: 118px;}
-.suosuo{ background:#666; color:#fff; border:1px solid #666;}
+.suosuo{ background:#666; color:#fff; border:1px solid #666;text-shadow: none;}
 
 .table.table-striped{ min-width:320px;}
 .zhaiyao{ man-width:220px;}

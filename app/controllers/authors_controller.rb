@@ -5,12 +5,12 @@ class AuthorsController < ApplicationController
 
   def create
     @author = current_user.create_author(author_params)
-    @author.is_apply_for = true
+    @author.status = 0
     @author.user_id = current_user.id
     if @author.save
       flash[:success] = "您已提交申请"
     else
-      flash[:error] = "ddd"
+      flash[:error] = "提交失败"
     end
     redirect_to current_author_path
 
@@ -26,6 +26,8 @@ class AuthorsController < ApplicationController
     end
 
     @author = request.env['PATH_INFO'] == "/author" ? current_user.author : Author.find(params[:id])
+    @novels = @author.novels
+    
   end
 
   private 

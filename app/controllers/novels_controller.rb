@@ -1,4 +1,8 @@
 class NovelsController < ApplicationController
+  def index
+    @novels = Novel.all
+  end
+
   def new
     # byebug
     @novel = Novel.new()
@@ -7,8 +11,28 @@ class NovelsController < ApplicationController
   def create
     @novel = current_author.novels.build(novel_params)
     @novel.author_id = current_author.id
-    @novel.save
-    redirect_to current_user_path
+    if @novel.save
+      flash[:success] = "您已成功添加书籍"
+      redirect_to current_author_path
+    else
+      flash[:error] = "添加失败"
+      render 'new'
+    end
+  end
+
+  def edit
+    @novel = Novel.find(params[:id])
+  end
+
+  def update
+    @novel = Novel.find(params[:id])
+    if @novel.update(novel_params)
+      flash[:success] = "您已成功更新书籍资料"
+      redirect_to current_author_path
+    else
+      flash[:error] = "更新失败"
+      render 'edit'
+    end
   end
 
   private 

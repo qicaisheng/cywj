@@ -1,0 +1,28 @@
+<%= form_for @novel, multiple: true, html: {class: "author-form "} do |f| %>
+
+  <%= render '/shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, "书名:" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "请输入书名" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :type, "类型:" %>
+    <%= f.text_field :type, class: "form-control", placeholder: "请输入类型" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cover, "封面:" %>
+    <%= f.text_field :cover, class: "form-control", placeholder: "请上传封面" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :keywords, "关键词:" %>
+    <%= f.text_area :keywords, class: "form-control", placeholder: "请填写书籍的关键词，三个左右" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "介绍:" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "请输入内容简介" %>
+  </div>
+
+  <%= f.submit "保存资料", class: "btn btn-default suosuo" %>
+
+<% end %>

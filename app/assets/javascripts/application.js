@@ -12,6 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-//= require bootstrap-sprockets
+//= require_self
+//= require bootstrap
+
+
+//= require redactor-rails
+//= require redactor-rails/plugins
+//= require redactor-rails/langs/zh_cn
+
+
+
+
+
+

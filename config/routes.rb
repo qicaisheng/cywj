@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
-
+  root 'home#index'
   get 'author' => 'authors#show', as: 'current_author'
   get 'user' => 'users#show', as: 'current_user'
   resources :users, only: 'show'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
-  root 'home#index'
+
   
   
 
