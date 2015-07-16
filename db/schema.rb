@@ -14,100 +14,103 @@
 ActiveRecord::Schema.define(version: 20150712091339) do
 
   create_table "authors", force: :cascade do |t|
-    t.string   "mobile"
-    t.string   "job"
-    t.string   "major"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "status"
-    t.string   "name"
+    t.string   "mobile",       limit: 255
+    t.string   "job",          limit: 255
+    t.string   "major",        limit: 255
+    t.text     "description",  limit: 65535
+    t.boolean  "is_apply_for", limit: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_id",      limit: 4
+    t.boolean  "is_right",     limit: 1
+    t.integer  "status",       limit: 4
+    t.string   "name",         limit: 255
   end
 
-  add_index "authors", ["user_id"], name: "index_authors_on_user_id"
+  add_index "authors", ["user_id"], name: "index_authors_on_user_id", using: :btree
 
   create_table "chapters", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "name"
-    t.text     "content"
-    t.string   "keywords"
-    t.integer  "novel_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "status"
+    t.integer  "number",     limit: 4
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "keywords",   limit: 255
+    t.integer  "novel_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "status",     limit: 4
   end
 
-  add_index "chapters", ["novel_id"], name: "index_chapters_on_novel_id"
+  add_index "chapters", ["novel_id"], name: "index_chapters_on_novel_id", using: :btree
 
   create_table "novels", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
-    t.string   "cover"
-    t.string   "keywords"
-    t.string   "description"
-    t.integer  "author_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",        limit: 255
+    t.string   "type",        limit: 255
+    t.string   "cover",       limit: 255
+    t.string   "keywords",    limit: 255
+    t.string   "description", limit: 255
+    t.integer  "author_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "novels", ["author_id"], name: "index_novels_on_author_id"
+  add_index "novels", ["author_id"], name: "index_novels_on_author_id", using: :btree
 
   create_table "redactor_assets", force: :cascade do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.integer  "assetable_id"
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
     t.string   "assetable_type",    limit: 30
     t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
-  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
+    t.string   "name",          limit: 255
+    t.integer  "resource_id",   limit: 4
+    t.string   "resource_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], name: "index_roles_on_name"
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
-    t.string   "mobile"
-    t.string   "job"
-    t.string   "major"
-    t.string   "image"
+    t.string   "username",               limit: 255
+    t.string   "mobile",                 limit: 255
+    t.string   "job",                    limit: 255
+    t.string   "major",                  limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.integer "user_id", limit: 4
+    t.integer "role_id", limit: 4
   end
 
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "chapters", "novels"
+  add_foreign_key "novels", "authors"
 end

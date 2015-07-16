@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 main">
-    <h2 class="sub-header">作者专区 <span>&nbsp;&nbsp;总共 <%= @novels.length %> 本书</span></h2>
+    <h2 class="sub-header">作者专区 
+      <% if @novles %>
+        <span>&nbsp;&nbsp;总共 <%= @novels.length %> 本书</span>
+      <% end %>
+    </h2>
     <% if @user.author && @user.author.status == 1 %>
       <div class="sub-header row">
         <div class="col-xs-2 col-sm-2">

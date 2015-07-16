@@ -26,13 +26,13 @@ class AuthorsController < ApplicationController
     end
 
     @author = request.env['PATH_INFO'] == "/author" ? current_user.author : Author.find(params[:id])
-    @novels = @author.novels
-    
+    @novels = @author.novels if @author
+
   end
 
   private 
     def author_params
-      params.require(:author).permit(:mobile, :job, :major, :description)
+      params.require(:author).permit(:name, :mobile, :job, :major, :description)
     end
 
 end
