@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def authenticate_author!   
+    redirect_to current_author_path if current_author.nil? || current_author.status != 1
+  end
 
   def current_author
-    @current_author = current_user.author
+    authenticate_user!
+    @current_author ||= current_user.author
   end
 
   protected

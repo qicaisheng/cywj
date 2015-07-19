@@ -1,7 +1,6 @@
 class AuthorsController < ApplicationController
-  def new
-    # @author = current_user.build_author
-  end
+  before_action :authenticate_user!
+  # load_and_authorize_resource
 
   def create
     @author = current_user.create_author(author_params)
@@ -17,17 +16,16 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    if request.env['PATH_INFO'] == "/author"
-      @user = current_user
-      @author = @user.author
-    else
-      @author =  Author.find(params[:id])
-      @user = @author.user
-    end
-
-    @author = request.env['PATH_INFO'] == "/author" ? current_user.author : Author.find(params[:id])
+    @user = current_user
+    @author = Author.find(params[:id])
     @novels = @author.novels if @author
+  end
 
+  def author
+    @user = current_user
+    @author = current_author
+    @novels = @author.novels if @author
+    # render 'show'
   end
 
   private 

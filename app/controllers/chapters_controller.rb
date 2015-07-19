@@ -1,6 +1,8 @@
 class ChaptersController < ApplicationController
+  # before_action :authenticate_user!
+
   def index
-    @chapters = Chapter.all
+    @chapters = Novel.find(params[:novel_id]).chapters
   end
 
   def new

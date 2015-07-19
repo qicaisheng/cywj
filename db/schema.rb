@@ -11,20 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712091339) do
+ActiveRecord::Schema.define(version: 20150718095336) do
 
   create_table "authors", force: :cascade do |t|
-    t.string   "mobile",       limit: 255
-    t.string   "job",          limit: 255
-    t.string   "major",        limit: 255
-    t.text     "description",  limit: 65535
-    t.boolean  "is_apply_for", limit: 1
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "user_id",      limit: 4
-    t.boolean  "is_right",     limit: 1
-    t.integer  "status",       limit: 4
-    t.string   "name",         limit: 255
+    t.string   "mobile",      limit: 255
+    t.string   "job",         limit: 255
+    t.string   "major",       limit: 255
+    t.text     "description", limit: 16777215
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "user_id",     limit: 4
+    t.integer  "status",      limit: 4
+    t.string   "name",        limit: 255
   end
 
   add_index "authors", ["user_id"], name: "index_authors_on_user_id", using: :btree

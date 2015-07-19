@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
-    @user = request.env['PATH_INFO'] == "/user" ? current_user : User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -9,9 +10,8 @@ class UsersController < ApplicationController
       redirect_to current_user_path
   end
 
-  def author
+  def user
     @user = current_user
-
   end
 
   private 

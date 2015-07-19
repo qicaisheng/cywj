@@ -3,12 +3,24 @@ class NovelsController < ApplicationController
     @novels = Novel.all
   end
 
+  def current_novels
+    authenticate_author!
+    @novels = current_author.novels if current_author
+  end
+
+  def current_chapters
+    authenticate_author!
+    @chapters = Novel.find(params[:id]).chapters
+  end
+
   def new
+    authenticate_author!
     # byebug
     @novel = Novel.new()
   end
 
   def create
+    authenticate_author!
     @novel = current_author.novels.build(novel_params)
     @novel.author_id = current_author.id
     if @novel.save
@@ -21,10 +33,12 @@ class NovelsController < ApplicationController
   end
 
   def edit
+    authenticate_author!
     @novel = Novel.find(params[:id])
   end
 
   def update
+    authenticate_author!
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
       flash[:success] = "您已成功更新书籍资料"
@@ -33,6 +47,10 @@ class NovelsController < ApplicationController
       flash[:error] = "更新失败"
       render 'edit'
     end
+  end
+
+  def show
+    @novel = Novel.find(params[:id])
   end
 
   private 

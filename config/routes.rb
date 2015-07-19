@@ -5,11 +5,13 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
   root 'home#index'
-  get 'author' => 'authors#show', as: 'current_author'
-  get 'user' => 'users#show', as: 'current_user'
+  get 'user' => 'users#user', as: 'current_user'
+  get 'author' => 'authors#author', as: 'current_author'
+  get 'current_novels' => 'novels#current_novels', as: 'current_novels'
   resources :users, only: 'show'
   resources :authors
   resources :novels do
+    get 'current_chapters', on: :member
     resources :chapters do
       resources :comments
     end

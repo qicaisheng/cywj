@@ -1,3 +1,6 @@
+require 'i18n'
+I18n.default_locale = 'zh-CN'
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration

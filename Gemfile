@@ -32,7 +32,7 @@ gem 'rolify'
 gem 'bootstrap-sass'
 
 gem 'rails_admin'
-
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 # gem 'tinymce-rails'
 gem 'redactor-rails'

@@ -1,0 +1,102 @@
+<div class="container">
+
+  <div class="row">
+
+   <!-- /一本书籍，一列 -->
+  <div class="col-sm-8 blog-main shujimain shujimain2">
+   <div class="blog-header shuye">
+    <img src="image/shu-img.jpg" class="fl" />
+    <h1 class="shu-title"><%= novel.name %></h1>
+    <p class="shu-description">
+    作&#12288;者：<%= novel.author.name %>
+    </p>
+    <p class="shu-description">
+    类&#12288;型：<%= novel.type %>
+    </p>
+    <p class="shu-description">
+    评论数：1118
+    </p>
+    <p class="shu-description">
+    关键词：<span class="label label-info shuji-guanjianci"><%= novel.keywords %></span>
+    </p>
+    <!--<span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
+    <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>-->
+    </p>
+   </div>
+   
+   <div class="jianjie">
+   <h2>内容简介</h2>
+    <p>
+    <%= novel.description %>
+    </p>
+   </div>
+   
+   <div>
+       <!-- 最新更新列表 --> 
+        <ul class="list-group row zhangjieliebiao">
+          <li class="list-group-item">
+            <a href="#">第50章 凡事总结提高</a>&nbsp;<span class="label label-info zhangjie-new">最新</span>
+            <span class="badge">评论14</span>
+          </li>
+          <li class="list-group-item">
+            <a href="#">第47章 凡事制定目标</a>
+            <span class="badge">评论14</span>
+          </li>
+          <li class="list-group-item">
+            <a href="#">第46章 凡事总结提高</a>
+            <span class="badge">评论14</span>
+          </li>
+          <li class="list-group-item">
+            <a href="#">查看全部章节</a>
+            <span class="badge"></span>
+          </li>
+        </ul>  
+      </div>     
+    
+    <div>
+          <ul class="media-list">
+            <li class="media">
+              <div class="media-body">
+                <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+              </div>
+            </li>
+            
+            <li class="media">
+              <div class="media-body">
+                <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                    
+              </div>
+            </li>
+          </ul>
+      </div>     
+    </div>
+    <!-- /一本书籍，一列 -->
+
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      <div class="sidebar-module sidebar-module-inset">
+        <h4>关于我们</h4>
+        <p>谢谢大家的支持，希望有所触动时，大家能够积极评论，希望在大家一起的努力下，让这本书越来越有价值。<br/>读者QQ群：3472482378438
+        </p>
+      </div>
+      <div class="sidebar-module">
+        <h5>关注微信公众号，第一时间知晓小说动态</h5>
+        <p><img src="image/erweima.jpg" class="erweima"/></p>
+      </div>
+      <!--<div class="sidebar-module">
+        <h4>标签筛选</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">首页</a></li>
+          <li><a href="#about">干货文章</a></li>
+          <li><a href="#contact">长沙活动</a></li>
+          <li><a href="#contact">长沙互联网界</a></li>
+          <li><a href="#about">回湘十问</a></li>
+          <li><a href="#contact">找组织</a></li>
+        </ol>
+      </div>-->
+    </div><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</div><!-- /.container -->
