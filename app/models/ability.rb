@@ -6,13 +6,26 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :author
-      can :read, :all
+      can [:show], Author do |author|
+        author.try(:id) == user.author.id
+      end
     else
           
     end
 
     if user.id
-    
+      can [:show], Author do |author|
+        author.try(:id) == user.author.try(:id)
+      end
+
+      can [:edit, :update], Novel do |novel|
+        novel.author.try(:id) == user.author.try(:id)
+      end
+
+      can [:new, :create, :edit, :update], Chapter do |chapter|
+        novel.author.try(:id) == user.author.try(:id)
+      end
+
     end
 
     # Define abilities for the passed in user here. For example:

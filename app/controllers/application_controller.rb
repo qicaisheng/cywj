@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => '你没有权限访问该页面'
+  end
+
   def authenticate_author!   
     redirect_to current_author_path if current_author.nil? || current_author.status != 1
   end

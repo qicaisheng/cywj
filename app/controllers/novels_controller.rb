@@ -35,11 +35,13 @@ class NovelsController < ApplicationController
   def edit
     authenticate_author!
     @novel = Novel.find(params[:id])
+    authorize! :edit, @novel
   end
 
   def update
     authenticate_author!
     @novel = Novel.find(params[:id])
+    authorize! :update, @novel
     if @novel.update(novel_params)
       flash[:success] = "您已成功更新书籍资料"
       redirect_to current_author_path

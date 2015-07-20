@@ -16,9 +16,9 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @user = current_user
     @author = Author.find(params[:id])
     @novels = @author.novels if @author
+    authorize! :show, @author
   end
 
   def author

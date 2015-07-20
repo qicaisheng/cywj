@@ -6,11 +6,13 @@ class ChaptersController < ApplicationController
   end
 
   def new
+    authenticate_author!
     @novel = Novel.find(params[:novel_id])
     @chapter = @novel.chapters.new
   end
 
   def create
+    authenticate_author!
     @novel = Novel.find(params[:novel_id])
     @chapter = @novel.chapters.build(chapter_params)
     @chapter.novel_id = @novel.id
@@ -19,11 +21,13 @@ class ChaptersController < ApplicationController
   end
 
   def edit
+    authenticate_author!
     @novel = Novel.find(params[:novel_id])
     @chapter = @novel.chapters.find(params[:id])
   end
 
   def update
+    authenticate_author!
     @novel = Novel.find(params[:novel_id])
     @chapter = @novel.chapters.find(params[:id])
     if @chapter.update(chapter_params)
