@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150718095336) do
     t.integer  "user_id",     limit: 4
     t.integer  "status",      limit: 4
     t.string   "name",        limit: 255
+    t.boolean  "is_right",    limit: 1
   end
 
   add_index "authors", ["user_id"], name: "index_authors_on_user_id", using: :btree
@@ -30,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150718095336) do
   create_table "chapters", force: :cascade do |t|
     t.integer  "number",     limit: 4
     t.string   "name",       limit: 255
-    t.text     "content",    limit: 65535
+    t.text     "content",    limit: 16777215
     t.string   "keywords",   limit: 255
     t.integer  "novel_id",   limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "status",     limit: 4
   end
 
