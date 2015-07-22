@@ -1,5 +1,5 @@
 require 'i18n'
-I18n.default_locale = :en
+I18n.default_locale = :'zh-CN'
 
 RailsAdmin.config do |config|
 
