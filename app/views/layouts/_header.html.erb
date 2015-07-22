@@ -10,6 +10,9 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <% if current_user.has_role? "admin" %>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="/admin">管理后台</a></li> 
+                <% end %>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= current_user_path %>">个人中心</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= current_author_path %>">作者专区</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=  destroy_user_session_path %>">退出</a></li>

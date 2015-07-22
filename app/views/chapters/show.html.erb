@@ -7,7 +7,7 @@
        <div class="blog-header">
         <h1 class="blog-title"><%= "第#{@chapter.number}章 #{@chapter.name}" %></h1>
         <p class="blog-description">
-        <span class="rich_media_meta rich_media_meta_text"><%= @chapter.created_at %>&nbsp;</span>
+        <span class="rich_media_meta rich_media_meta_text"><%= @chapter.created_at.to_s(:db) %>&nbsp;</span>
         <a href="#"><%= @chapter.novel.author.name %></a>
         </p>
       </div>

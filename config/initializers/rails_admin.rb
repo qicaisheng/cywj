@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
 
   config.authorize_with do
     authenticate_user!
-    redirect_to root_path unless current_user.has_role? :admin
+    redirect_to main_app.root_path unless current_user.has_role? :admin
   end
 
   ### Popular gems integration
