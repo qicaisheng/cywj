@@ -3,6 +3,11 @@ I18n.default_locale = :'zh-CN'
 
 RailsAdmin.config do |config|
 
+  config.authorize_with do
+    authenticate_user!
+    redirect_to root_path unless current_user.has_role? :admin
+  end
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -12,7 +17,7 @@ RailsAdmin.config do |config|
   # config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  config.authorize_with :cancan
+  # config.authorize_with :cancan
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
