@@ -26,7 +26,7 @@
             <tbody>
               <% @novels.each do |novel| %>
                 <tr>
-                  <td class="tushu-img"><img src="image/shu-img.jpg"></td>
+                  <td class="tushu-img"><img src=<%= novel.cover.url %>></td>
                   <td class="tushu-xinxi">
                     <div>书名：<%= novel.name%></div>
                     <div>作者：<%= novel.author.name%></div>
