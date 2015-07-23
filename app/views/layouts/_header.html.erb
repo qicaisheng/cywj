@@ -6,7 +6,7 @@
       <div class="dropdown">
             <% if user_signed_in? %>
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
-                <img src="image/pm1logo.png" class="user-img"><%= current_user.username %>
+                <%= image_tag("pm1logo.jpg", class: "user-img")  %><%= current_user.username %>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -19,7 +19,7 @@
               </ul>
             <% else %>
               <a href="<%= new_user_session_path %>"><button class="btn btn-default dropdown-toggle" type="button" " aria-expanded="false">
-                <img src="image/pm1logo.png" class="user-img">登录
+                <%= image_tag("pm1logo.jpg", class: "user-img")  %>登录
                 <span class="caret"></span>
               </button>
               </a>
