@@ -14,7 +14,11 @@
           <tbody>
             <tr>
               <td>类别</td>
-              <td>读者</td>
+              <% if @user.author.try(:status) == 1 %>
+                <td>作者</td>
+              <% else %>
+                <td>读者</td>
+              <% end %>
             </tr>
             <tr>
               <td>昵称</td>
