@@ -17,11 +17,11 @@
 //= require bootstrap
 
 
-
-//= require redactor-rails/redactor.min
+//= require redactor-rails
 //= require redactor-rails/plugins
-//= require redactor-rails/config
 //= require redactor-rails/langs/zh_cn
+
+
 
 
 

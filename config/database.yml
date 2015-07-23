@@ -25,8 +25,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cywj_pro
+  database: cywj_dev
   pool: 5
   username: root
-  password: 0549915f-fd61
+  password: 123456
   host: localhost
