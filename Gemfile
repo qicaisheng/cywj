@@ -38,7 +38,8 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'qiniu'
+gem 'carrierwave-qiniu'
 gem 'font-awesome-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

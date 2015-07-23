@@ -20,3 +20,4 @@
 /config/deploy/production.rb
 /.idea
 /config/database.yml
+/config/initializes/carrierwave.rb
