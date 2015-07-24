@@ -63,3 +63,7 @@ div.blog-post p {
 }
 
 
+@media screen and (max-device-width: 480px) {
+  .blog-main {padding: 0px !important;} 
+}
+
