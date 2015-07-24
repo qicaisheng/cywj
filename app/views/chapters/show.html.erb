@@ -8,7 +8,7 @@
         <h1 class="blog-title"><%= "第#{@chapter.number}章 #{@chapter.name}" %></h1>
         <p class="blog-description">
         <span class="rich_media_meta rich_media_meta_text"><%= @chapter.created_at.to_s(:db) %>&nbsp;</span>
-        <a href="#"><%= @chapter.novel.author.name %></a>
+        <%= link_to @chapter.novel.author.name, user_path(@chapter.novel.author.user) %>
         </p>
       </div>
       
@@ -21,48 +21,50 @@
 
           <nav>
             <ul class="pager">
-              <li><a href="#">上一章</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-              <li><a href="#">下一章</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-              <li><a href="#"><%= @chapter.novel.name %>目录</a></li>
+              <% if  @chapter.previous_chapter %>
+                <li><%=  link_to "上一章", novel_chapter_path(@novel, @chapter.previous_chapter) %>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <% end %>
+              <% if  @chapter.next_chapter %>
+                <li><%=  link_to "下一章", novel_chapter_path(@novel, @chapter.next_chapter) %>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <% end %>
+              <li><%= link_to @chapter.novel.name + "目录", novel_chapters_path(@chapter.novel) %></li>
             </ul>
           </nav>
           
+          <%= form_for [@novel, @chapter, @chapter.chapter_comments.build], multiple: true, html: {class: "comment-form "} do |f| %>
+
+            <%= render '/shared/error_messages', object: f.object %>
+
+            <div class="form-group">
+              <%= f.label :content, "评论:" %>
+              <%= f.text_area :content, class: "form-control", placeholder: "请输入评论内容" %>
+            </div>
+            <%= f.submit "提交评论", class: "btn btn-default suosuo" %>
+
+          <% end %>
+
+
           <div class="pingluntianxie">
-             <form>          
-                <div>      
-                  <div>      
-                    <p>亲，想评论请先 <a href="#">登录</a> 哦，没有账号，请先 <a href="#">注册</a> 啦。</p>
-                    <p class="comment-form-comment">
-                      <input type="radio" id="qingjie" aria-label="..."> <label for="qingjie">情节看法</label>            
-                         &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="radio" id="guandian" aria-label="..."> <label for="guandian">观点看法</label>
-                    </p>                   
-                    <p class="comment-form-comment">
-                      <textarea type="text" class="form-control" placeholder="请输入评论内容"></textarea>
-                    </p> 
-                    <p class="comment-form-comment">
-                      <button href="#" class="btn btn-default suosuo2">提交评论</button>
-                    </p>     
-                   </div>      
-                </div>
-             </form> 
+            <p>亲，想评论请先 <%= link_to "登录", user_session_path %> 哦，没有账号，请先 <%= link_to "注册", new_user_registration_path %> 啦。</p>  
+            <%= form_for [@novel, @chapter, @chapter.chapter_comments.build], multiple: true, html: {class: "comment-form "} do |f| %>
+              <%= render '/shared/error_messages', object: f.object %>
+              <div class="form-group">
+                <%= f.text_area :content, class: "form-control", placeholder: "请输入评论内容" %>
+              </div>
+              <%= f.submit "提交评论", class: "btn btn-default suosuo2" %>
+            <% end %>
+
           </div>
           <div>
               <ul class="media-list">
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                  </div>
-                </li>
-                
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                                        
-                  </div>
-                </li>
+                <%= @chapter.chapter_comments.order(created_at: :desc).each do |chapter_comment| %>
+                  <li class="media">
+                    <div class="media-body">
+                      <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon"><%= chapter_comment.user.try(:username) %></span></p>
+                      <p><%= chapter_comment.content %></p>
+                    </div>
+                  </li>
+                <% end %>
               </ul>
           </div>
           

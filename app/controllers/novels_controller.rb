@@ -10,7 +10,8 @@ class NovelsController < ApplicationController
 
   def current_chapters
     authenticate_author!
-    @chapters = Novel.find(params[:id]).chapters
+    @novel = Novel.find(params[:id])
+    @chapters = @novel.chapters
   end
 
   def new

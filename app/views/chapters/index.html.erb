@@ -5,53 +5,25 @@
     <div class="col-sm-8 blog-main">
     
    <div class="blog-header">
-    <h1 class="blog-title">创业无疆</h1>
+    <h1 class="blog-title"><%= link_to @novel.name, novel_path(@novel) %></h1>
     <p class="blog-description">
-    <a href="#">作者：西村夜月</a>&nbsp;&nbsp;
+    作者：<%= link_to @novel.author.name, user_path(@novel.author.user) %>&nbsp;&nbsp;
     <span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
-    <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>
+    <% if @chapters.last %>
+      <span class="rich_media_meta rich_media_meta_text">最新更新时间：<%= @chapters.last.updated_at.to_s(:db) %></span>
+    <% end %>
     </p>
    </div>
    
      <div>
        <!-- 文章内容区域 开始 -->    
         <ul class="list-group row zhangjieliebiao">
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第50章 凡事总结提高</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第49章 凡事研究策划</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第48章 凡事制定目标</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第47章 凡事制定目标</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第46章 凡事总结提高</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第45章 凡事研究策划</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第44章 凡事制定目标</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第43章 凡事制定目标</a>
-            <span class="badge">评论14</span>
-          </li>
-          <li class="list-group-item col-xs-12 col-sm-6">
-            <a href="#">第42章 凡事制定目标</a>
-            <span class="badge">评论14</span>
-          </li>
+          <% @chapters.each do |chapter| %>
+            <li class="list-group-item col-xs-12 col-sm-6">
+              <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel, chapter) %>
+              <span class="badge">评论14</span>
+            </li>            
+          <% end %>
         </ul>  
       </div>     
          

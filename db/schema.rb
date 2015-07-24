@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718095336) do
+ActiveRecord::Schema.define(version: 20150724081937) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "mobile",      limit: 255
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20150718095336) do
 
   add_index "authors", ["user_id"], name: "index_authors_on_user_id", using: :btree
 
+  create_table "chapter_comments", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "novel_id",   limit: 4
+    t.integer  "chapter_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "chapter_comments", ["chapter_id"], name: "index_chapter_comments_on_chapter_id", using: :btree
+  add_index "chapter_comments", ["novel_id"], name: "index_chapter_comments_on_novel_id", using: :btree
+  add_index "chapter_comments", ["user_id"], name: "index_chapter_comments_on_user_id", using: :btree
+
   create_table "chapters", force: :cascade do |t|
     t.integer  "number",     limit: 4
     t.string   "name",       limit: 255
@@ -40,6 +53,17 @@ ActiveRecord::Schema.define(version: 20150718095336) do
   end
 
   add_index "chapters", ["novel_id"], name: "index_chapters_on_novel_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "chapter_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["chapter_id"], name: "index_comments_on_chapter_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "novels", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -110,6 +134,11 @@ ActiveRecord::Schema.define(version: 20150718095336) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "chapter_comments", "chapters"
+  add_foreign_key "chapter_comments", "novels"
+  add_foreign_key "chapter_comments", "users"
   add_foreign_key "chapters", "novels"
+  add_foreign_key "comments", "chapters"
+  add_foreign_key "comments", "users"
   add_foreign_key "novels", "authors"
 end

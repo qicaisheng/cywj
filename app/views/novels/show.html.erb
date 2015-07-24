@@ -5,10 +5,10 @@
    <!-- /一本书籍，一列 -->
   <div class="col-sm-8 blog-main shujimain shujimain2">
    <div class="blog-header shuye">
-    <img src="image/shu-img.jpg" class="fl" />
+    <%= image_tag(@novel.cover.url, class: "fl") %>
     <h1 class="shu-title"><%= @novel.name %></h1>
     <p class="shu-description">
-    作&#12288;者：<%= @novel.author.name %>
+    作&#12288;者：<%= link_to @novel.author.name, @novel.author.user %>
     </p>
     <p class="shu-description">
     类&#12288;型：<%= @novel.type %>
@@ -42,7 +42,7 @@
           <% end %>
 
           <li class="list-group-item">
-            <%= link_to '查看全部章节', current_chapters_novel_path %>
+            <%= link_to '查看全部章节', novel_chapters_path(@novel) %>
             <span class="badge"></span>
           </li>
         </ul>  

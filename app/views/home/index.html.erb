@@ -1,23 +1,23 @@
 <div class="container">
 
-     <div class="row rowhidden">
-     
-     <!-- /一本书籍，一列 -->
+  <div class="row rowhidden">
+    <% @novels.each do |novel| %>
+      <!-- /一本书籍，一列 -->
       <div class="col-sm-8 blog-main col-xs-12 col-sm-4 shujimain">
        <div class="blog-header shuye">
         <%= image_tag("shu-img.jpg", class: "fl") %>
-        <h1 class="shu-title"><a href="#">创业无疆</a></h1>
+        <%= link_to image_tag(novel.cover.url), novel_path(novel), class: "fl" %>
         <p class="shu-description">
-        作　者：西村夜月
+        作　者：<%= link_to novel.author.user.username, user_path(novel.author.user) %>
         </p>
         <p class="shu-description">
-        类　型：互联网创业
+        类　型：<%= novel.type %>
         </p>
         <p class="shu-description">
-        评论数：1118
+        评论数：<%= novel.chapter_comments.length %>
         </p>
         <p class="shu-description">
-        关键词：<span class="label label-info shuji-guanjianci">产品经理</span><span class="label label-info shuji-guanjianci">产品经理</span>
+        关键词：<span class="label label-info shuji-guanjianci"><%= novel.keywords %></span>
         </p>
         <!--<span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
         <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>-->
@@ -27,197 +27,43 @@
        <div class="jianjie">
        <h2>内容简介</h2>
         <p>
-        小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习互联网相关的知识,小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习
+        <%= novel.description %>
         </p>
        </div>
        
        <div>
-           <!-- 最新更新列表 --> 
-            <ul class="list-group row zhangjieliebiao">
-              <li class="list-group-item">
-                <a href="#">第50章 凡事总结提高</a>&nbsp;<span class="label label-info zhangjie-new">最新</span>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第47章 凡事制定目标</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第46章 凡事总结提高</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">查看全部章节</a>
-                <span class="badge"></span>
-              </li>
-            </ul>  
-          </div>     
-        
-        <div>
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                  </div>
-                </li>
-                
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                                        
-                  </div>
-                </li>
-              </ul>
-          </div>     
-        </div>
-        <!-- /一本书籍，一列 -->
-        
-        <!-- /一本书籍，一列 -->
-      <div class="col-sm-8 blog-main col-xs-12 col-sm-4 shujimain">
-       <div class="blog-header shuye">
-        <%= image_tag("shu-img.jpg", class: "fl") %>
-        <h1 class="shu-title"><a href="#">创业无疆</a></h1>
-        <p class="shu-description">
-        作　者：西村夜月
-        </p>
-        <p class="shu-description">
-        类　型：互联网创业
-        </p>
-        <p class="shu-description">
-        评论数：1118
-        </p>
-        <p class="shu-description">
-        关键词：<span class="label label-info shuji-guanjianci">产品经理</span><span class="label label-info shuji-guanjianci">产品经理</span>
-        </p>
-        <!--<span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
-        <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>-->
-        <p></p>
-       </div>
-       
-       <div class="jianjie">
-       <h2>内容简介</h2>
-        <p>
-        小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习互联网相关的知识,小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习
-        </p>
-       </div>
-       
-       <div>
-           <!-- 最新更新列表 --> 
-            <ul class="list-group row zhangjieliebiao">
-              <li class="list-group-item">
-                <a href="#">第50章 凡事总结提高</a>&nbsp;<span class="label label-info zhangjie-new">最新</span>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第47章 凡事制定目标</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第46章 凡事总结提高</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">查看全部章节</a>
-                <span class="badge"></span>
-              </li>
-            </ul>  
-          </div>     
-        
-        <div>
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                  </div>
-                </li>
-                
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                                        
-                  </div>
-                </li>
-              </ul>
-          </div>     
-        </div>
-        <!-- /一本书籍，一列 -->
-        
-        <!-- /一本书籍，一列 -->
-      <div class="col-sm-8 blog-main col-xs-12 col-sm-4 shujimain">
-       <div class="blog-header shuye">
-        <%= image_tag("shu-img.jpg", class: "fl") %>
-        <h1 class="shu-title"><a href="#">创业无疆</a></h1>
-        <p class="shu-description">
-        作　者：西村夜月
-        </p>
-        <p class="shu-description">
-        类　型：互联网创业
-        </p>
-        <p class="shu-description">
-        评论数：1118
-        </p>
-        <p class="shu-description">
-        关键词：<span class="label label-info shuji-guanjianci">产品经理</span><span class="label label-info shuji-guanjianci">产品经理</span>
-        </p>
-        <!--<span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
-        <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>-->
-        <p></p>
-       </div>
-       
-       <div class="jianjie">
-       <h2>内容简介</h2>
-        <p>
-        小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习互联网相关的知识,小说以互联网创业浪潮为背景，将互联网知识融入小说故事之中，让你看小说的同时学习
-        </p>
-       </div>
-       
-       <div>
-           <!-- 最新更新列表 --> 
-            <ul class="list-group row zhangjieliebiao">
-              <li class="list-group-item">
-                <a href="#">第50章 凡事总结提高</a>&nbsp;<span class="label label-info zhangjie-new">最新</span>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第47章 凡事制定目标</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">第46章 凡事总结提高</a>
-                <span class="badge">评论14</span>
-              </li>
-              <li class="list-group-item">
-                <a href="#">查看全部章节</a>
-                <span class="badge"></span>
-              </li>
-            </ul>  
-          </div>     
-        
-        <div>
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                  </div>
-                </li>
-                
-                <li class="media">
-                  <div class="media-body">
-                    <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                                        
-                  </div>
-                </li>
-              </ul>
-          </div>     
-        </div>
-        <!-- /一本书籍，一列 -->
+          <!-- 最新更新列表 --> 
+          <ul class="list-group row zhangjieliebiao">
 
-      </div><!-- /.row -->
+            <% novel.chapters.order(created_at: :desc).limit(3).each do |chapter| %>
+              <li class="list-group-item">
+                <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(novel,chapter) %>
+                <span class="badge">评论<%= chapter.chapter_comments.length %></span>
+              </li>
+            <% end %>
+            <li class="list-group-item">
+              <%= link_to '查看全部章节', novel_chapters_path(novel) %>
+              <span class="badge"></span>
+            </li>
 
-    </div>
+          </ul>  
+        </div>     
+        
+        <div>
+          <ul class="media-list">
+            <%= novel.chapter_comments.order(created_at: :desc).limit(2).each do |chapter_comment| %>
+              <li class="media">
+                <div class="media-body">
+                  <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon"><%= chapter_comment.user.try(:username) %></span></p>
+                  <p><%= chapter_comment.content %></p>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>     
+      </div>
+      <!-- /一本书籍，一列 -->
+    <% end %>
+
+  </div><!-- /.row -->
+</div>

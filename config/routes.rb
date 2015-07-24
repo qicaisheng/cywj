@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :novels do
     get 'current_chapters', on: :member
     resources :chapters do
-      resources :comments
+      resources :chapter_comments
     end
   end
 

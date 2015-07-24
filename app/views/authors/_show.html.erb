@@ -26,9 +26,9 @@
             <tbody>
               <% @novels.each do |novel| %>
                 <tr>
-                  <td class="tushu-img"><img src=<%= novel.cover.url %>></td>
+                <td class="tushu-img"><%= link_to image_tag(novel.cover.url), novel_path(novel) %></td>
                   <td class="tushu-xinxi">
-                    <div>书名：<%= novel.name%></div>
+                    <div>书名：<%= link_to novel.name, novel_path(novel) %></div>
                     <div>作者：<%= novel.author.name%></div>
                     <div>类型：<%= novel.type%></div>
                     <div>评论：1800条</div>
@@ -36,8 +36,8 @@
                   </td>
                   <td class="tushu-zhangjie">
                     <ul class="list-group">
-                    <%= link_to "+ 新建章节", new_novel_chapter_path(novel, novel.chapters.new ) %>
-
+                    <%= link_to "+ 新建章节", new_novel_chapter_path(novel, novel.chapters.new ) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= link_to "章节管理", current_chapters_novel_path(novel) %>
                     <% novel.chapters.order(created_at: :desc).limit(3).each do |chapter| %>
                       <li class="list-group-item">
                         <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(novel,chapter) %>

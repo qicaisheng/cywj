@@ -2,7 +2,8 @@ class ChaptersController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @chapters = Novel.find(params[:novel_id]).chapters
+    @novel = Novel.find(params[:novel_id])
+    @chapters = @novel.chapters
   end
 
   def new
@@ -48,4 +49,9 @@ class ChaptersController < ApplicationController
     def chapter_params
       params.require(:chapter).permit(:number, :name, :content, :keywords)
     end
+
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
+
 end
