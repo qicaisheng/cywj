@@ -4,7 +4,7 @@ class Chapter < ActiveRecord::Base
   validates :number, numericality: { only_integer: true }
 
   def next_chapter
-    Chapter.where("novel_id = ? AND number < ?", self.novel_id, self.number).order(:number).first
+    Chapter.where("novel_id = ? AND number > ?", self.novel_id, self.number).order(:number).first
   end
 
   def previous_chapter

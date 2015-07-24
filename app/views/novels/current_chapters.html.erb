@@ -20,6 +20,7 @@
             <li class="list-group-item">
               <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel,chapter) %>
               <%= link_to '编辑', edit_novel_chapter_path(@novel, chapter), class: 'badge' %>
+              <span class="badge">评论<%= chapter.chapter_comments.length %></span>
             </li>
           <% end %>
         </ul>

@@ -31,7 +31,7 @@
                     <div>书名：<%= link_to novel.name, novel_path(novel) %></div>
                     <div>作者：<%= novel.author.name%></div>
                     <div>类型：<%= novel.type%></div>
-                    <div>评论：1800条</div>
+                    <div>评论：<%= novel.chapter_comments.length %>条</div>
                     <div><%= link_to "修改书籍资料", edit_novel_path(novel) %></div>
                   </td>
                   <td class="tushu-zhangjie">
@@ -42,6 +42,7 @@
                       <li class="list-group-item">
                         <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(novel,chapter) %>
                         <%= link_to '编辑', edit_novel_chapter_path(novel, chapter), class: 'badge' %>
+                        <span class="badge">评论<%= chapter.chapter_comments.length %></span> 
                       </li>
                     <% end %>
                     </ul>

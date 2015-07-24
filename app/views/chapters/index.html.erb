@@ -8,7 +8,7 @@
     <h1 class="blog-title"><%= link_to @novel.name, novel_path(@novel) %></h1>
     <p class="blog-description">
     作者：<%= link_to @novel.author.name, user_path(@novel.author.user) %>&nbsp;&nbsp;
-    <span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
+    <span class="rich_media_meta rich_media_meta_text">评论总数：<%= @novel.chapter_comments.length %> 条</span>&nbsp;&nbsp;
     <% if @chapters.last %>
       <span class="rich_media_meta rich_media_meta_text">最新更新时间：<%= @chapters.last.updated_at.to_s(:db) %></span>
     <% end %>
@@ -21,7 +21,7 @@
           <% @chapters.each do |chapter| %>
             <li class="list-group-item col-xs-12 col-sm-6">
               <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel, chapter) %>
-              <span class="badge">评论14</span>
+              <span class="badge">评论<%= chapter.chapter_comments.length %></span>
             </li>            
           <% end %>
         </ul>  
