@@ -17,8 +17,11 @@
     评论数：<%= novel.chapter_comments.length %>
     </p>
     <p class="shu-description">
-    关键词：<span class="label label-info shuji-guanjianci"><%= novel.keywords %></span>
+    关键词：<% novel.keywords_array.each do |keyword| %>
+            <span class="label label-info shuji-guanjianci"><%= keyword %></span>
+           <% end %>
     </p>
+
     <!--<span class="rich_media_meta rich_media_meta_text">评论总数：1119 条</span>&nbsp;&nbsp;
     <span class="rich_media_meta rich_media_meta_text">最新更新时间：2015-03-09</span>-->
     </p>
