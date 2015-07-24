@@ -31,19 +31,6 @@
             </ul>
           </nav>
           
-          <%= form_for [@novel, @chapter, @chapter.chapter_comments.build], multiple: true, html: {class: "comment-form "} do |f| %>
-
-            <%= render '/shared/error_messages', object: f.object %>
-
-            <div class="form-group">
-              <%= f.label :content, "评论:" %>
-              <%= f.text_area :content, class: "form-control", placeholder: "请输入评论内容" %>
-            </div>
-            <%= f.submit "提交评论", class: "btn btn-default suosuo" %>
-
-          <% end %>
-
-
           <div class="pingluntianxie">
             <p>亲，想评论请先 <%= link_to "登录", user_session_path %> 哦，没有账号，请先 <%= link_to "注册", new_user_registration_path %> 啦。</p>  
             <%= form_for [@novel, @chapter, @chapter.chapter_comments.build], multiple: true, html: {class: "comment-form "} do |f| %>
@@ -57,7 +44,7 @@
           </div>
           <div>
               <ul class="media-list">
-                <%= @chapter.chapter_comments.order(created_at: :desc).each do |chapter_comment| %>
+                <% @chapter.chapter_comments.order(created_at: :desc).each do |chapter_comment| %>
                   <li class="media">
                     <div class="media-body">
                       <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon"><%= chapter_comment.user.try(:username) %></span></p>

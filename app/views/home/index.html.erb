@@ -5,7 +5,6 @@
       <!-- /一本书籍，一列 -->
       <div class="col-sm-8 blog-main col-xs-12 col-sm-4 shujimain">
        <div class="blog-header shuye">
-        <%= image_tag("shu-img.jpg", class: "fl") %>
         <%= link_to image_tag(novel.cover.url), novel_path(novel), class: "fl" %>
         <p class="shu-description">
         作　者：<%= link_to novel.author.user.username, user_path(novel.author.user) %>
@@ -51,7 +50,7 @@
         
         <div>
           <ul class="media-list">
-            <%= novel.chapter_comments.order(created_at: :desc).limit(2).each do |chapter_comment| %>
+            <% novel.chapter_comments.order(created_at: :desc).limit(2).each do |chapter_comment| %>
               <li class="media">
                 <div class="media-body">
                   <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon"><%= chapter_comment.user.try(:username) %></span></p>

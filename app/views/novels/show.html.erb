@@ -14,7 +14,7 @@
     类&#12288;型：<%= @novel.type %>
     </p>
     <p class="shu-description">
-    评论数：1118
+    评论数：<%= @novel.chapter_comments.length %>
     </p>
     <p class="shu-description">
     关键词：<span class="label label-info shuji-guanjianci"><%= @novel.keywords %></span>
@@ -48,23 +48,17 @@
         </ul>  
       </div>     
     
-    <div>
-          <ul class="media-list">
+      <div>
+        <ul class="media-list">
+          <% @novel.chapter_comments.order(created_at: :desc).each do |chapter_comment| %>
             <li class="media">
               <div class="media-body">
-                <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">情节看法</span></p>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon"><%= chapter_comment.user.try(:username) %></span></p>
+                <p><%= chapter_comment.content %></p>
               </div>
             </li>
-            
-            <li class="media">
-              <div class="media-body">
-                <p class="media-heading" id="media-heading">评论人：<span class="anchorjs-icon">西村夜月</span><span class="fr label label-info">观点看法</span></p>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                                    
-              </div>
-            </li>
-          </ul>
+          <% end %>
+        </ul>
       </div>     
     </div>
     <!-- /一本书籍，一列 -->
