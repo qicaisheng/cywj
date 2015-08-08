@@ -7,7 +7,7 @@
    <div class="blog-header">
     <h1 class="blog-title"><%= link_to @novel.name, novel_path(@novel) %></h1>
     <p class="blog-description">
-    作者：<%= link_to @novel.author.name, user_path(@novel.author.user) %>&nbsp;&nbsp;
+    作者：<%=  @novel.author.name %>&nbsp;&nbsp;
     <span class="rich_media_meta rich_media_meta_text">评论总数：<%= @novel.chapter_comments.length %> 条</span>&nbsp;&nbsp;
     <% if @chapters.last %>
       <span class="rich_media_meta rich_media_meta_text">最新更新时间：<%= @chapters.last.updated_at.to_s(:db) %></span>

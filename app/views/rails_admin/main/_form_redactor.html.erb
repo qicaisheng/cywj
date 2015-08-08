@@ -1,0 +1,21 @@
+<%= form.send :text_area, field.method_name, :class => 'redactor' %>
+<link rel="stylesheet" type="text/css" href="/assets/redactor-rails/css/redactor.css" />
+<script media="all" src="/assets/redactor-rails/redactor.min.js?body=1" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(
+  function(){
+  var csrf_token = $('meta[name=csrf-token]').attr('content');
+  var csrf_param = $('meta[name=csrf-param]').attr('content');
+  var params;
+  if (csrf_param !== undefined && csrf_token !== undefined) {
+    params = csrf_param + "=" + encodeURIComponent(csrf_token);
+  }
+  $('.redactor').redactor(
+    { "imageUpload":"/redactor_rails/pictures?" + params,
+      "imageGetJson":"/redactor_rails/pictures",
+      "autoresize": false,
+      "path":"/assets/redactor-rails",
+      "css":"style.css"}
+  );
+});
+</script>

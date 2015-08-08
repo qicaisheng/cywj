@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
-  root 'home#index'
+  root 'pages#index'
   get 'user' => 'users#user', as: 'current_user'
   get 'author' => 'authors#author', as: 'current_author'
   get 'current_novels' => 'novels#current_novels', as: 'current_novels'
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       resources :chapter_comments
     end
   end
+
+  get '/:slug' => 'pages#show'
 
   
   

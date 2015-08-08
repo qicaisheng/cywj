@@ -8,7 +8,7 @@
         <%= link_to image_tag(novel.cover.url, alt: "#{novel.name}"), novel_path(novel), class: "fl" %>
         <h1 class="shu-title"><%= link_to novel.name, novel_path(novel) %></h1>
         <p class="shu-description">
-        作　者：<%= link_to novel.author.user.username, user_path(novel.author.user) %>
+        作　者：<%=  novel.author.user.username %>
         </p>
         <p class="shu-description">
         类　型：<%= novel.type %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724144146) do
+ActiveRecord::Schema.define(version: 20150808132946) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "mobile",      limit: 255
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(version: 20150724144146) do
   end
 
   add_index "novels", ["author_id"], name: "index_novels_on_author_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "redactor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false

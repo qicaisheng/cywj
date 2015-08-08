@@ -39,4 +39,31 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+   config.model Page do    
+     edit do
+       field :title     
+       field :content, :text do
+         partial 'form_redactor'   
+       end
+       field :created_at
+       field :updated_at
+     end
+   end
+
+   config.model Chapter do    
+     edit do
+       field :number
+       field :name     
+       field :content, :text do
+         partial 'form_redactor'   
+       end
+       field :keywords
+       field :novel_id
+       field :created_at
+       field :updated_at
+       field :status
+     end
+   end
+
 end
