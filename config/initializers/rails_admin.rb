@@ -42,6 +42,7 @@ RailsAdmin.config do |config|
 
    config.model Page do    
      edit do
+       field :slug
        field :title     
        field :content, :text do
          partial 'form_redactor'   
