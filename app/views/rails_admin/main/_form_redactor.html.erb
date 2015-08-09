@@ -1,6 +1,6 @@
 <%= form.send :text_area, field.method_name, :class => 'redactor' %>
-<link rel="stylesheet" type="text/css" href="/assets/redactor-rails/css/redactor.css" />
-<script media="all" src="/assets/redactor-rails/redactor.min.js?body=1" type="text/javascript"></script>
+<%= stylesheet_link_tag    'redactor', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'redactor', 'data-turbolinks-track' => true %>
 <script type="text/javascript">
 $(document).ready(
   function(){
