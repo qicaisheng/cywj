@@ -8,6 +8,6 @@ class Chapter < ActiveRecord::Base
   end
 
   def previous_chapter
-    Chapter.where("novel_id = ? AND number < ?", self.novel_id, self.number).order(:number).first
+    Chapter.where("novel_id = ? AND number < ?", self.novel_id, self.number).order(:number).last
   end  
 end
