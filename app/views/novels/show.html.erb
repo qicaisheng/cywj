@@ -34,8 +34,8 @@
    </div>
    
    <div class="jianjie">
-      <h2>最新章节</h2>  
-      <!-- 最新更新列表 --> 
+      <h2>最新章节</h2>
+      <!-- 最新更新列表 -->
       <ul class="list-group row zhangjieliebiao">
 
         <% @novel.chapters.order(created_at: :desc).limit(3).each do |chapter| %>
@@ -44,18 +44,18 @@
           </li>
         <% end %>
 
-      </ul>  
-      </div>     
+      </ul>
+      </div>
 
      <div class="jianjie">
       <h2>全部章节</h2>
-        <!-- 文章内容区域 开始 -->    
+        <!-- 文章内容区域 开始 -->
         <ul class="list-group row zhangjieliebiao">
           <% @chapters.each do |chapter| %>
             <li class="list-group-item col-xs-12 col-sm-6">
               <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel, chapter) %>
               <span class="badge">评论<%= chapter.chapter_comments.length %></span>
-            </li>            
+            </li>
           <% end %>
         </ul>  
       </div>     
