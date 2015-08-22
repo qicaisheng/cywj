@@ -54,6 +54,7 @@ class NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
+    @chapters = @novel.chapters
   end
 
   private 

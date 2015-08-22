@@ -29,27 +29,37 @@
    <div class="jianjie">
    <h2>内容简介</h2>
     <p>
-    <%= @novel.description %>
+      <%= @novel.description %>
     </p>
    </div>
    
-   <div>
-       <!-- 最新更新列表 --> 
-        <ul class="list-group row zhangjieliebiao">
+   <div class="jianjie">
+      <h2>最新章节</h2>  
+      <!-- 最新更新列表 --> 
+      <ul class="list-group row zhangjieliebiao">
 
-          <% @novel.chapters.order(created_at: :desc).limit(3).each do |chapter| %>
-            <li class="list-group-item">
-              <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel,chapter) %>
-            </li>
-          <% end %>
-
+        <% @novel.chapters.order(created_at: :desc).limit(3).each do |chapter| %>
           <li class="list-group-item">
-            <%= link_to '查看全部章节', novel_chapters_path(@novel) %>
-            <span class="badge"></span>
+            <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel,chapter) %>
           </li>
+        <% end %>
+
+      </ul>  
+      </div>     
+
+     <div class="jianjie">
+      <h2>全部章节</h2>
+        <!-- 文章内容区域 开始 -->    
+        <ul class="list-group row zhangjieliebiao">
+          <% @chapters.each do |chapter| %>
+            <li class="list-group-item col-xs-12 col-sm-6">
+              <%= link_to "第#{chapter.number}章 #{chapter.name}", novel_chapter_path(@novel, chapter) %>
+              <span class="badge">评论<%= chapter.chapter_comments.length %></span>
+            </li>            
+          <% end %>
         </ul>  
       </div>     
-    
+
       <div>
         <ul class="media-list">
           <% @novel.chapter_comments.order(created_at: :desc).each do |chapter_comment| %>
