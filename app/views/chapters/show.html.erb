@@ -27,7 +27,7 @@
               <% if  @chapter.next_chapter %>
                 <li><%=  link_to "下一章", novel_chapter_path(@novel, @chapter.next_chapter) %>&nbsp;&nbsp;&nbsp;&nbsp;</li>
               <% end %>
-              <li><%= link_to @chapter.novel.name + "目录", novel_chapters_path(@chapter.novel) %></li>
+              <li><%= link_to @chapter.novel.name + "目录", novel_path(@chapter.novel) %></li>
             </ul>
           </nav>
           
