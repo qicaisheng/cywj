@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>创业无疆_知说9i53首发|创业小说,互联网小说,炒股小说,各类知识型小说尽在知说9i53</title>
+  <% if content_for?(:title) %>
+    <title><%= yield(:title) %></title>
+  <% else %>
+    <title>创业无疆_知说9i53首发 | 创业小说,互联网小说,炒股小说,各类知识型小说尽在知说9i53</title>
+  <% end %>
+
+  <% if content_for?(:keywords) %>
+    <meta name="keywords" id="metaKeywords" content= <%= yield(:keywords) %> />
+  <% else %>
+    <meta name="keywords" id="metaKeywords" content="创业无疆,创业无疆连载,创业无疆最新章节,知识型小说,励志小说,知说9i53" />
+  <% end %>
+
+  <% if content_for?(:description) %>
+    <meta name="description" id="metaDescription" content= <%= yield(:description) %> />
+  <% else %>
+    <meta name="description" id="metaDescription" content="创业无疆,知识型小说,尽在知说9i53。知说9i53提供创业小说,互联网小说,炒股小说,管理小说,程序员小说,产品经理小说,励志小说等各类知识型小说阅读,知识型小说尽在知说9i53。" />
+  <% end %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'dashboard', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'offcanvas', media: 'all', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="keywords" id="metaKeywords" content="创业无疆,创业无疆连载,创业无疆最新章节,知识型小说,励志小说,知说9i53" />
-  <meta name="description" id="metaDescription" content="创业无疆,知识型小说,尽在知说9i53。知说9i53提供创业小说,互联网小说,炒股小说,管理小说,程序员小说,产品经理小说,励志小说等各类知识型小说阅读,知识型小说尽在知说9i53。" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 </head>
 <body>
   <%= render 'layouts/header' %>

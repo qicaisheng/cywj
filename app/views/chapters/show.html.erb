@@ -1,3 +1,7 @@
+<% content_for :title, @chapter.name + '_' + @novel.name + ' 第' + @chapter.number.to_s + '章' %>
+<% content_for :keywords, @novel.name + '，' + @chapter.name + '，' + @chapter.keywords %>
+<% content_for :description, @novel.description %>
+
 <div class="container">
 
       <div class="row">
